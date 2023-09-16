@@ -1,6 +1,6 @@
 const { internalError, badRequest } = require('../../utils/http-helper');
 const { validateCPF, validateEmail, validateDate } = require('../../utils/validations');
-const { stringToDate } = require('../../utils/formats');
+const { stringToDate, dateToString } = require('../../utils/formats');
 const { UserModel } = require('../../models/user-model');
 const bcrypt = require('bcrypt');
 const { createToken } = require('../../utils/token');
@@ -67,7 +67,7 @@ class CreateUserController {
 					error: badRequest('Registro militar já cadastrado')
 				});
 			}
-			
+
 			// Criptografar senha
 
 			const passwordHashed = await bcrypt.hash(senha, Number(process.env.SALT));
@@ -92,7 +92,7 @@ class CreateUserController {
 					email: user.email,
 					cpf: user.cpf,
 					registroMilitar: user.registroMilitar,
-					dataNascimento: user.dataNascimento
+					dataNascimento: dateToString(user.dataNascimento)
 				},
 				accessToken
 			});
