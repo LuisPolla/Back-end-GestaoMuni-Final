@@ -23,6 +23,15 @@ class MunicaoModel extends Model {
 	static associate(models) {
 		this.belongsToMany(models.User, { foreignKey: 'municaoId', through: models.Historico });
 	}
+
+	static async countMunicoes() {
+		try {
+		  const count = await this.count();
+		  return count;
+		} catch (error) {
+		  throw new Error(`Erro ao contar munições: ${error.message}`);
+		}
+	  }
 }
 
 module.exports = { MunicaoModel };
