@@ -3,6 +3,7 @@ const { stringToDate } = require('../../utils/formats');
 const { validateDate } = require('../../utils/validations');
 const { MunicaoModel } = require('../../models/municao-model');
 const { HistoricoModel } = require('../../models/historico-model');
+const { Sequelize } = require('sequelize');
 
 class CreateMunicaoController {
 	async create(req, res) {
@@ -62,6 +63,7 @@ class CreateMunicaoController {
 				error: internalError(error)
 			});
 		}
+		const result = await MunicaoModel.sequelize.query("select calibragem, sum(quatidadeEmEstoque) from municao  group by calibragem");
 	}
 }
 

@@ -5,7 +5,7 @@ class UpdateMunicaoController {
     async update(req, res) {
         try {
             const { id } = req.params;
-
+            
             if (!id) {
                 return res.status(400).json({ error: 'ID não informado' });
             }
