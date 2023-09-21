@@ -29,6 +29,8 @@ routes.post('/municao', authMiddleware, createMunicaoController.create);
 routes.put('/municao/update/:id', authMiddleware, UpdateMunicaoController.update);
 routes.get('/municao', authMiddleware, getAllMunicoes);
 routes.delete('/municao/:id', authMiddleware, DeleteMunicaoController.delete);
+
+//rotas de dashboard
 routes.get('/totalMunicoes', authMiddleware, GetTotalMunicoesController.getTotalMunicoes);
 routes.get('/totalUsers', getTotalUsersController.getTotalUsers);
 
