@@ -3,8 +3,20 @@ const { HistoricoModel } = require('../../models/historico-model');
 class GetAllHistoricoController {
   async getAll(req, res) {
     try {
-      // Consulta todos os registros de histórico
-      const historicos = await HistoricoModel.findAll();
+      const { order } = req.query;
+      let historicos;
+
+      if (order === 'asc') {
+        historicos = await HistoricoModel.findAll({
+          order: [['data', 'ASC']], // Ordena por data em ordem ascendente (mais antigos)
+        });
+      } else if (order === 'desc') {
+        historicos = await HistoricoModel.findAll({
+          order: [['data', 'DESC']], // Ordena por data em ordem descendente (mais recentes)
+        });
+      } else {
+        historicos = await HistoricoModel.findAll();
+      }
 
       return res.status(200).json(historicos);
     } catch (error) {
