@@ -12,6 +12,8 @@ const UpdateMunicaoController = require('./controllers/municao/update-municao-co
 const { getAllMunicoes } = require('./controllers/municao/Getall-municao-controller');
 const DeleteMunicaoController = require('./controllers/municao/delete-municao-controller');
 const GetTotalMunicoesController = require('./controllers/municao/get-total-municoes-controller');
+const { getTotalCalibresDiversificados } = require('./controllers/municao/CalibragemController');
+
 
 // Histórico
 const GetAllHistoricoController = require('./controllers/histórico/Getall-historico-controller');
@@ -29,6 +31,9 @@ routes.post('/municao', authMiddleware, createMunicaoController.create);
 routes.put('/municao/update/:id', authMiddleware, UpdateMunicaoController.update);
 routes.get('/municao', authMiddleware, getAllMunicoes);
 routes.delete('/municao/:id', authMiddleware, DeleteMunicaoController.delete);
+routes.get('/total-calibres', getTotalCalibresDiversificados);
+
+
 
 //rotas de dashboard
 routes.get('/totalMunicoes', authMiddleware, GetTotalMunicoesController.getTotalMunicoes);
