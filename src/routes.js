@@ -14,7 +14,6 @@ const DeleteMunicaoController = require('./controllers/municao/delete-municao-co
 const GetTotalMunicoesController = require('./controllers/municao/get-total-municoes-controller');
 const { getTotalCalibresDiversificados } = require('./controllers/municao/CalibragemController');
 
-
 // Histórico
 const GetAllHistoricoController = require('./controllers/histórico/Getall-historico-controller');
 

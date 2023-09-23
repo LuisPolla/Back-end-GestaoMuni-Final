@@ -1,18 +1,19 @@
 const { MunicaoModel } = require('../../models/municao-model');
 
-// Controller para calcular o total de calibres diversificados
-async function getTotalCalibresDiversificados(req, res) {
-  try {
-    // Use o método distinct para obter uma lista única de calibragens
-    const calibragens = await MunicaoModel.distinct('calibragem');
+const getTotalCalibresDiversificados = async (req, res) => {
+    try {
+        // Lógica para calcular o total de calibres diversificados
+        const distinctCalibres = await MunicaoModel.aggregate('calibragem', 'DISTINCT', { plain: false });
 
-    // Calcule o total de calibres diversificados
-    const totalCalibres = calibragens.length;
+        const totalCalibres = distinctCalibres.length; // O número de resultados distintos
 
-    res.json({ totalCalibres });
-  } catch (error) {
-    res.status(500).json({ error: 'Erro ao calcular o total de calibres diversificados' });
-  }
-}
+        console.log('Total de calibres diversificados:', totalCalibres);
+
+        res.json({ totalCalibres });
+    } catch (error) {
+        console.error('Erro ao calcular o total de calibres diversificados:', error);
+        res.status(500).json({ error: 'Erro interno do servidor ao calcular os calibres diversificados' });
+    }
+};
 
 module.exports = { getTotalCalibresDiversificados };
