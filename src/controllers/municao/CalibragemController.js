@@ -7,8 +7,6 @@ const getTotalCalibresDiversificados = async (req, res) => {
 
         const totalCalibres = distinctCalibres.length; // O número de resultados distintos
 
-        console.log('Total de calibres diversificados:', totalCalibres);
-
         res.json({ totalCalibres });
     } catch (error) {
         console.error('Erro ao calcular o total de calibres diversificados:', error);
