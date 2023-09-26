@@ -1,4 +1,3 @@
-// Importe o modelo de munição aqui
 const { MunicaoModel } = require('../../models/municao-model');
 
 // Função para buscar todas as munições

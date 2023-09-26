@@ -30,12 +30,10 @@ class UpdateMunicaoController {
             }
 
             if (dataFabriacao) {
-                // Valide a data de fabricação aqui, se necessário
                 novosDados.dataFabriacao = dataFabriacao;
             }
 
             if (estadoConservacao) {
-                // Valide o estado de conservação aqui, se necessário
                 novosDados.estadoConservacao = estadoConservacao;
             }
 
@@ -55,7 +53,6 @@ class UpdateMunicaoController {
                 novosDados.empresaFabricante = empresaFabricante;
             }
 
-            console.log("AQUI"); // Debug
 
             await municao.update(novosDados);
 
