@@ -4,7 +4,15 @@ class HistoricoModel extends Model {
 	static init(database) {
 		super.init({
 			userId: DataTypes.INTEGER,
+			policialId: { 
+				type: Sequelize.INTEGER,
+				allowNull: false,
+				references: { model: 'policiais', key: 'id' }, 
+				onDelete: 'CASCADE',
+				onUpdate: 'CASCADE',
+			},
 			municaoId: DataTypes.INTEGER,
+			quantidadeEntregue: DataTypes.INTEGER,
 			dataCriacao: {
 				type: DataTypes.DATE,
 				defaultValue: DataTypes.NOW
@@ -16,6 +24,7 @@ class HistoricoModel extends Model {
 			sequelize: database
 		});
 	}
+	
 }
 
 module.exports = { HistoricoModel };
