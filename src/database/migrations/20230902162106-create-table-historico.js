@@ -27,7 +27,7 @@ module.exports = {
 			policialId: { 
 				type: Sequelize.INTEGER,
 				allowNull: false,
-				references: { model: 'Policial', key: 'id' },
+				references: { model: 'policiais', key: 'id' },
 				onDelete: 'CASCADE',
 				onUpdate: 'CASCADE',
 			},
